@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Electric Power Regulation Timeline — EN + فارسی</title>
+<title>Electric Power Regulation Timeline — English</title>
 <style>
   :root{
     --bg: #0b1220;            /* page background */
@@ -31,7 +31,7 @@
       radial-gradient(900px 500px at 110% 10%, #0ea5e955, transparent 60%),
       linear-gradient(180deg, var(--bg), var(--bg));
   }
-  .wrap{max-width:1100px; margin:0 auto; padding:32px 20px 56px}
+  .wrap{max-width:1100px; margin:0 auto; padding:32px 20px 70px}
   header{
     display:grid; gap:10px; justify-items:center; text-align:center; margin-bottom:22px;
   }
@@ -104,10 +104,6 @@
     background: #0b122070;
   }
   .en{margin-top:8px; color:var(--ink); line-height:1.6}
-  .fa{
-    margin-top:10px; color:var(--muted); line-height:1.9; border-top:1px dashed #33415566; padding-top:10px;
-    direction: rtl; font-family: Vazirmatn, "IRANSans", "Segoe UI", Tahoma, sans-serif;
-  }
   .tagrow{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px}
   .tag{
     font-size:11px; color:#0b1220; background:
@@ -117,12 +113,18 @@
   .tag.gr{ background: linear-gradient(90deg, var(--accentC), var(--accentA)); color:#06251b}
   .tag.vi{ background: linear-gradient(90deg, var(--accentB), var(--accentC)); color:#140a27}
 
-  /* Footer tip */
+  /* Sources footer */
+  footer{
+    margin-top:40px; padding-top:18px;
+    border-top: 1px dashed #33415566; color:var(--muted);
+    font-size:14px; line-height:1.6;
+  }
+  footer a{color:inherit; text-decoration:underline dotted}
   .tip{
-    margin-top:28px; color:var(--muted); text-align:center; font-size:14px;
+    margin-top:10px; color:var(--muted); text-align:center; font-size:13px;
   }
 
-  /* small screens: make it single-sided for clarity */
+  /* small screens: single-sided */
   @media (max-width: 780px){
     .timeline::before{left:20px; transform:none}
     .item::before{left:36px; transform:none}
@@ -132,7 +134,6 @@
   }
 
   @keyframes rise{from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:translateY(0)}}
-  /* focus styles for accessibility */
   .card:focus-within, .card:focus{outline:2px solid transparent; box-shadow: 0 0 0 6px var(--ring)}
 </style>
 </head>
@@ -147,7 +148,7 @@
       </div>
       <h1 class="title">From Regulated Monopoly to Clean-Energy Markets</h1>
       <p class="sub">
-        A concise visual of key U.S. regulatory milestones that shaped today’s electricity markets — with bilingual notes (EN + فارسی).
+        A concise visual of key U.S. regulatory milestones that shaped today’s electricity markets.
       </p>
       <div class="legend">
         <span><span class="dot cy"></span>Foundations</span>
@@ -168,11 +169,6 @@
             Regulators responded with the <strong>regulated local monopoly</strong> model: one utility per
             area, universal service obligations, and state-approved rates with a fair (but limited) return.
           </p>
-          <p class="fa">
-            در آغاز، شرکت‌های کوچک محلی موجب آشفتگی و تکرار خطوط می‌شدند. راه‌حل، مدل
-            <strong>انحصار تحت نظارت</strong> بود: یک شرکت برای هر منطقه، الزام به خدمت‌رسانی همگانی
-            و نرخ‌های تأییدشده توسط دولت ایالتی با سود منصفانه و محدود.
-          </p>
           <div class="tagrow">
             <span class="tag">Universal Service</span>
             <span class="tag gr">Reliability</span>
@@ -188,10 +184,6 @@
           <p class="en">
             Utilities owned <em>generation, transmission, and distribution</em>. Large coal, gas, hydro, and
             nuclear plants achieved economies of scale; prices stayed relatively stable while access expanded nationally.
-          </p>
-          <p class="fa">
-            شرکت‌های برق <em>تولید، انتقال و توزیع</em> را یکپارچه داشتند. نیروگاه‌های بزرگ زغال‌سنگ،
-            گاز، هیدرو و هسته‌ای مزیت مقیاس ایجاد کردند؛ قیمت‌ها نسبتاً پایدار ماند و دسترسی سراسری شد.
           </p>
           <div class="tagrow">
             <span class="tag">Economies of Scale</span>
@@ -210,10 +202,6 @@
             <strong>qualifying facilities</strong> (cogeneration and small renewables) at fair rates —
             opening the door for non-utility generation.
           </p>
-          <p class="fa">
-            قانون PURPA شرکت‌های برق را ملزم کرد برق تولیدکنندگان صلاحیت‌دار (هم‌تولید و تجدیدپذیرهای کوچک)
-            را با قیمت عادلانه بخرند — دریچه ورود تولید غیردولتی/غیرانحصاری به شبکه باز شد.
-          </p>
           <div class="tagrow">
             <span class="tag gr">Renewables</span>
             <span class="tag">Cogeneration (CHP)</span>
@@ -231,10 +219,6 @@
             independent power producers to participate in <strong>wholesale markets</strong> and
             fostering creation of regional grid operators (e.g., CAISO).
           </p>
-          <p class="fa">
-            دستورات FERC دسترسی آزاد به خطوط انتقال را برقرار کرد؛ تولیدکنندگان مستقل وارد
-            <strong>بازار عمده‌فروشی</strong> شدند و اپراتورهای منطقه‌ای مانند CAISO شکل گرفتند.
-          </p>
           <div class="tagrow">
             <span class="tag vi">Wholesale Markets</span>
             <span class="tag">Open Access</span>
@@ -251,10 +235,6 @@
             Poorly designed deregulation led to manipulation and rolling blackouts. Lesson:
             market rules must be robust to ensure reliability, fair pricing, and transparency.
           </p>
-          <p class="fa">
-            آزادسازی با طراحی ضعیف به سوءاستفاده و قطع برق‌های چرخشی انجامید. درس مهم:
-            قوانین بازار باید محکم باشند تا قابلیت اطمینان، قیمت‌گذاری عادلانه و شفافیت تضمین شود.
-          </p>
           <div class="tagrow">
             <span class="tag">Market Design</span>
             <span class="tag vi">Reliability Risk</span>
@@ -263,17 +243,13 @@
       </article>
 
       <!-- 2000s–Now Hybrid -->
-      <article class="item">
+      <article class="="item">
         <span class="node" aria-hidden="true"></span>
         <div class="card" tabindex="0" aria-label="2000s–Now Hybrid Model">
           <div class="year">2000s–Now <span class="chip">Hybrid Model</span></div>
           <p class="en">
             A mixed landscape: some regions remain vertically integrated, others run competitive wholesale/retail markets.
             Policy now targets <strong>renewables, storage, demand response</strong>, and equity.
-          </p>
-          <p class="fa">
-            چشم‌انداز ترکیبی: برخی مناطق همچنان یکپارچه، برخی با بازارهای رقابتی عمده/خرده. سیاست‌ها
-            اکنون بر <strong>تجدیدپذیرها، ذخیره‌سازی، پاسخ به تقاضا</strong> و عدالت انرژی متمرکزند.
           </p>
           <div class="tagrow">
             <span class="tag gr">Storage</span>
@@ -292,10 +268,6 @@
             Expect stronger clean-energy mandates, distributed energy resources, smarter markets (capacity & ancillary services),
             and tighter <strong>cybersecurity</strong> for an increasingly digital grid.
           </p>
-          <p class="fa">
-            انتظار می‌رود الزامات قوی‌تر انرژی پاک، منابع انرژی توزیع‌شده، بازارهای هوشمندتر (ظرفیت و خدمات جانبی)
-            و <strong>امنیت سایبری</strong> سخت‌گیرانه‌ برای شبکه روزبه‌روز دیجیتال‌تر تصویب شود.
-          </p>
           <div class="tagrow">
             <span class="tag gr">DERs</span>
             <span class="tag">Ancillary Services</span>
@@ -306,9 +278,13 @@
 
     </section>
 
-    <p class="tip">
-      Tip: Print to PDF for your notes (works nicely). You can also paste this file into your course website as a standalone section.
-    </p>
+    <footer>
+      <strong>Sources:</strong> Timeline synthesized for academic demonstration from:
+      <em>Masters, G.M. (2004). Renewable and Efficient Electric Power Systems</em>, Sections 3.11–3.12
+      (historical sketch of U.S. electric power regulation), and UC Berkeley ENGIN 210B course materials
+      (Module 3 overview and transcripts on electricity markets and regulation).
+      <div class="tip">Note: This page is a student learning aid; not an official publication.</div>
+    </footer>
   </div>
 </body>
 </html>
