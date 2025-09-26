@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Electric Power Regulation Timeline — EN + فارسی</title>
+<style>
+  :root{
+    --bg: #0b1220;            /* page background */
+    --card: #0f172a;          /* card background */
+    --ink: #e5e7eb;           /* main text */
+    --muted: #94a3b8;         /* secondary text */
+    --accentA: #38bdf8;       /* cyan */
+    --accentB: #a78bfa;       /* violet */
+    --accentC: #34d399;       /* green */
+    --ring: #60a5fa55;        /* focus ring */
+  }
+  @media (prefers-color-scheme: light){
+    :root{
+      --bg:#f8fafc; --card:#ffffff; --ink:#0f172a; --muted:#475569;
+      --accentA:#0891b2; --accentB:#7c3aed; --accentC:#059669; --ring:#2563eb33;
+    }
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    color:var(--ink); background:
+      radial-gradient(1200px 600px at 10% -10%, #1e293b55, transparent 60%),
+      radial-gradient(900px 500px at 110% 10%, #0ea5e955, transparent 60%),
+      linear-gradient(180deg, var(--bg), var(--bg));
+  }
+  .wrap{max-width:1100px; margin:0 auto; padding:32px 20px 56px}
+  header{
+    display:grid; gap:10px; justify-items:center; text-align:center; margin-bottom:22px;
+  }
+  .badge{
+    font-weight:600; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted);
+    display:inline-flex; gap:8px; align-items:center; padding:8px 12px; border-radius:999px;
+    background:linear-gradient(90deg, #0ea5e922, #7c3aed22);
+    border:1px solid #64748b44;
+  }
+  .title{font-size: clamp(24px, 3.5vw, 40px); font-weight:800; line-height:1.1; margin:0}
+  .sub{color:var(--muted); max-width:800px}
+  .legend{display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin-top:8px}
+  .dot{width:10px; height:10px; border-radius:999px; display:inline-block; margin-inline-end:8px}
+  .cy{background:var(--accentA)} .vi{background:var(--accentB)} .gr{background:var(--accentC)}
+
+  /* Timeline */
+  .timeline{
+    position:relative; margin-top:26px; padding:30px 0 10px;
+  }
+  /* central line */
+  .timeline::before{
+    content:""; position:absolute; inset:0 50% 0 auto; width:2px;
+    background:linear-gradient(180deg, var(--accentA), var(--accentB), var(--accentC));
+    opacity:.45; transform:translateX(-1px);
+  }
+
+  .item{
+    --side: 1; /* 1 = right, -1 = left */
+    position:relative; display:grid; grid-template-columns: 1fr;
+    margin: 28px 0; padding: 0 0 0;
+    animation: rise .6s ease both;
+  }
+  .item:nth-child(odd){ --side: -1; } /* alternate */
+  /* connector to center line */
+  .item::before{
+    content:""; position:absolute; top:22px;
+    left: calc(50% + (var(--side) * 18px));
+    width:18px; height:2px; background:#94a3b866;
+    transform: translateX(calc(var(--side) * -100%));
+  }
+  /* node on center line */
+  .node{
+    position:absolute; top:14px; left:50%; transform:translate(-50%,0);
+    width:16px; height:16px; border-radius:50%;
+    background: radial-gradient(circle at 30% 30%, #fff8, #fff2 40%, transparent 70%),
+                linear-gradient(135deg, var(--accentA), var(--accentB));
+    box-shadow: 0 0 0 6px #00000010, 0 0 20px 4px #7c3aed55, inset 0 0 10px #0003;
+  }
+  .card{
+    position:relative; width:min(520px, 92vw); margin-left: calc(50% + (var(--side) * 24px));
+    transform: translateX(calc(var(--side) * -50%));
+    background: linear-gradient(180deg, #ffffff05, #00000008), var(--card);
+    border:1px solid #1f2a3d55; border-radius:18px; padding:18px 18px 16px;
+    box-shadow: 0 10px 30px #00000020, inset 0 1px 0 #ffffff0f;
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  }
+  .card:hover{
+    transform: translateX(calc(var(--side) * -50%)) translateY(-2px);
+    box-shadow: 0 16px 42px #00000030; border-color:#5b21b655;
+  }
+  .year{
+    display:inline-flex; align-items:center; gap:10px;
+    font-weight:800; letter-spacing:.02em; color:#e2e8f0;
+    background:linear-gradient(90deg, var(--accentA), var(--accentB));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    font-size: clamp(18px, 2.2vw, 22px);
+  }
+  .chip{
+    font-size:12px; color:var(--muted); border:1px solid #33415566; padding:4px 8px; border-radius:999px;
+    background: #0b122070;
+  }
+  .en{margin-top:8px; color:var(--ink); line-height:1.6}
+  .fa{
+    margin-top:10px; color:var(--muted); line-height:1.9; border-top:1px dashed #33415566; padding-top:10px;
+    direction: rtl; font-family: Vazirmatn, "IRANSans", "Segoe UI", Tahoma, sans-serif;
+  }
+  .tagrow{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px}
+  .tag{
+    font-size:11px; color:#0b1220; background:
+      linear-gradient(90deg, var(--accentA), var(--accentB));
+    padding:6px 10px; border-radius:999px; box-shadow: inset 0 1px 0 #ffffff44;
+  }
+  .tag.gr{ background: linear-gradient(90deg, var(--accentC), var(--accentA)); color:#06251b}
+  .tag.vi{ background: linear-gradient(90deg, var(--accentB), var(--accentC)); color:#140a27}
+
+  /* Footer tip */
+  .tip{
+    margin-top:28px; color:var(--muted); text-align:center; font-size:14px;
+  }
+
+  /* small screens: make it single-sided for clarity */
+  @media (max-width: 780px){
+    .timeline::before{left:20px; transform:none}
+    .item::before{left:36px; transform:none}
+    .node{left:20px; transform:none}
+    .card{margin-left: 64px; transform:none}
+    .card:hover{transform: translateY(-2px)}
+  }
+
+  @keyframes rise{from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:translateY(0)}}
+  /* focus styles for accessibility */
+  .card:focus-within, .card:focus{outline:2px solid transparent; box-shadow: 0 0 0 6px var(--ring)}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 3v18M3 12h18" stroke="currentColor" stroke-width="2" opacity=".6"/>
+        </svg>
+        Electric Power Regulation Timeline
+      </div>
+      <h1 class="title">From Regulated Monopoly to Clean-Energy Markets</h1>
+      <p class="sub">
+        A concise visual of key U.S. regulatory milestones that shaped today’s electricity markets — with bilingual notes (EN + فارسی).
+      </p>
+      <div class="legend">
+        <span><span class="dot cy"></span>Foundations</span>
+        <span><span class="dot vi"></span>Markets</span>
+        <span><span class="dot gr"></span>Clean Energy / Future</span>
+      </div>
+    </header>
+
+    <section class="timeline">
+
+      <!-- 1900s–1930s -->
+      <article class="item">
+        <span class="node" aria-hidden="true"></span>
+        <div class="card" tabindex="0" aria-label="1900s–1930s Regulated Monopoly">
+          <div class="year">1900s–1930s <span class="chip">Regulated Monopoly</span></div>
+          <p class="en">
+            Multiple small local suppliers caused chaotic duplication of wires and services.
+            Regulators responded with the <strong>regulated local monopoly</strong> model: one utility per
+            area, universal service obligations, and state-approved rates with a fair (but limited) return.
+          </p>
+          <p class="fa">
+            در آغاز، شرکت‌های کوچک محلی موجب آشفتگی و تکرار خطوط می‌شدند. راه‌حل، مدل
+            <strong>انحصار تحت نظارت</strong> بود: یک شرکت برای هر منطقه، الزام به خدمت‌رسانی همگانی
+            و نرخ‌های تأییدشده توسط دولت ایالتی با سود منصفانه و محدود.
+          </p>
+          <div class="tagrow">
+            <span class="tag">Universal Service</span>
+            <span class="tag gr">Reliability</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 1940s–1970s -->
+      <article class="item">
+        <span class="node" aria-hidden="true"></span>
+        <div class="card" tabindex="0" aria-label="1940s–1970s Vertically Integrated Utilities">
+          <div class="year">1940s–1970s <span class="chip">Vertically Integrated Utilities</span></div>
+          <p class="en">
+            Utilities owned <em>generation, transmission, and distribution</em>. Large coal, gas, hydro, and
+            nuclear plants achieved economies of scale; prices stayed relatively stable while access expanded nationally.
+          </p>
+          <p class="fa">
+            شرکت‌های برق <em>تولید، انتقال و توزیع</em> را یکپارچه داشتند. نیروگاه‌های بزرگ زغال‌سنگ،
+            گاز، هیدرو و هسته‌ای مزیت مقیاس ایجاد کردند؛ قیمت‌ها نسبتاً پایدار ماند و دسترسی سراسری شد.
+          </p>
+          <div class="tagrow">
+            <span class="tag">Economies of Scale</span>
+            <span class="tag vi">Stable Rates</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 1978 PURPA -->
+      <article class="item">
+        <span class="node" aria-hidden="true"></span>
+        <div class="card" tabindex="0" aria-label="1978 PURPA">
+          <div class="year">1978 <span class="chip">PURPA</span></div>
+          <p class="en">
+            The Public Utility Regulatory Policies Act required utilities to buy power from
+            <strong>qualifying facilities</strong> (cogeneration and small renewables) at fair rates —
+            opening the door for non-utility generation.
+          </p>
+          <p class="fa">
+            قانون PURPA شرکت‌های برق را ملزم کرد برق تولیدکنندگان صلاحیت‌دار (هم‌تولید و تجدیدپذیرهای کوچک)
+            را با قیمت عادلانه بخرند — دریچه ورود تولید غیردولتی/غیرانحصاری به شبکه باز شد.
+          </p>
+          <div class="tagrow">
+            <span class="tag gr">Renewables</span>
+            <span class="tag">Cogeneration (CHP)</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 1990s FERC Open Access -->
+      <article class="item">
+        <span class="node" aria-hidden="true"></span>
+        <div class="card" tabindex="0" aria-label="1990s FERC Open Access">
+          <div class="year">1990s <span class="chip">FERC Open Access</span></div>
+          <p class="en">
+            FERC orders established <strong>open access</strong> to transmission lines, enabling
+            independent power producers to participate in <strong>wholesale markets</strong> and
+            fostering creation of regional grid operators (e.g., CAISO).
+          </p>
+          <p class="fa">
+            دستورات FERC دسترسی آزاد به خطوط انتقال را برقرار کرد؛ تولیدکنندگان مستقل وارد
+            <strong>بازار عمده‌فروشی</strong> شدند و اپراتورهای منطقه‌ای مانند CAISO شکل گرفتند.
+          </p>
+          <div class="tagrow">
+            <span class="tag vi">Wholesale Markets</span>
+            <span class="tag">Open Access</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2000–2001 CA Crisis -->
+      <article class="item">
+        <span class="node" aria-hidden="true"></span>
+        <div class="card" tabindex="0" aria-label="2000–2001 California Crisis">
+          <div class="year">2000–2001 <span class="chip">California Crisis</span></div>
+          <p class="en">
+            Poorly designed deregulation led to manipulation and rolling blackouts. Lesson:
+            market rules must be robust to ensure reliability, fair pricing, and transparency.
+          </p>
+          <p class="fa">
+            آزادسازی با طراحی ضعیف به سوءاستفاده و قطع برق‌های چرخشی انجامید. درس مهم:
+            قوانین بازار باید محکم باشند تا قابلیت اطمینان، قیمت‌گذاری عادلانه و شفافیت تضمین شود.
+          </p>
+          <div class="tagrow">
+            <span class="tag">Market Design</span>
+            <span class="tag vi">Reliability Risk</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2000s–Now Hybrid -->
+      <article class="item">
+        <span class="node" aria-hidden="true"></span>
+        <div class="card" tabindex="0" aria-label="2000s–Now Hybrid Model">
+          <div class="year">2000s–Now <span class="chip">Hybrid Model</span></div>
+          <p class="en">
+            A mixed landscape: some regions remain vertically integrated, others run competitive wholesale/retail markets.
+            Policy now targets <strong>renewables, storage, demand response</strong>, and equity.
+          </p>
+          <p class="fa">
+            چشم‌انداز ترکیبی: برخی مناطق همچنان یکپارچه، برخی با بازارهای رقابتی عمده/خرده. سیاست‌ها
+            اکنون بر <strong>تجدیدپذیرها، ذخیره‌سازی، پاسخ به تقاضا</strong> و عدالت انرژی متمرکزند.
+          </p>
+          <div class="tagrow">
+            <span class="tag gr">Storage</span>
+            <span class="tag vi">Demand Response</span>
+            <span class="tag">Equity</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Future -->
+      <article class="item">
+        <span class="node" aria-hidden="true"></span>
+        <div class="card" tabindex="0" aria-label="Future Clean Energy & Resilience">
+          <div class="year">Future <span class="chip">Clean Energy & Resilience</span></div>
+          <p class="en">
+            Expect stronger clean-energy mandates, distributed energy resources, smarter markets (capacity & ancillary services),
+            and tighter <strong>cybersecurity</strong> for an increasingly digital grid.
+          </p>
+          <p class="fa">
+            انتظار می‌رود الزامات قوی‌تر انرژی پاک، منابع انرژی توزیع‌شده، بازارهای هوشمندتر (ظرفیت و خدمات جانبی)
+            و <strong>امنیت سایبری</strong> سخت‌گیرانه‌ برای شبکه روزبه‌روز دیجیتال‌تر تصویب شود.
+          </p>
+          <div class="tagrow">
+            <span class="tag gr">DERs</span>
+            <span class="tag">Ancillary Services</span>
+            <span class="tag vi">Cybersecurity</span>
+          </div>
+        </div>
+      </article>
+
+    </section>
+
+    <p class="tip">
+      Tip: Print to PDF for your notes (works nicely). You can also paste this file into your course website as a standalone section.
+    </p>
+  </div>
+</body>
+</html>
